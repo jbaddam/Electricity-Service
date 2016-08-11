@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/tx 
+    	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+	<mvc:annotation-driven />
+
+	<!-- <import resource="JMSSender.xml"/>
+	<import resource="JMSListener.xml"/> -->	
+
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/util" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+
+		<property name="annotatedClasses">
+			<list>
+				<value>
+					com.bootcampjava.electricityservice.models.registration.Customer
+				</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+
+	<context:component-scan base-package="com.bootcampjava.electricityservice.controllers.registration" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<bean id="regDAO" class="com.bootcampjava.electricityservice.daos.registration.RegistrationDAO" />
+	<bean id="custClient" class="com.bootcampjava.electricityservice.clients.restclient.CustomerClient"></bean>
+	<bean id="serviceClient" class="com.bootcampjava.electricityservice.clients.soapclient.ServicePlanClient"></bean>
+	<bean id="regSercice" class="com.bootcampjava.electricityservice.services.registration.RegistrationService" />
+	
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory"  
+ p:brokerURL="tcp://localhost:61616" />  
+
+<context:component-scan base-package="com.bootcampjava.electricityservice.jms"></context:component-scan>
+
+<bean id="messageSender" class="com.bootcampjava.electricityservice.jms.MessageSender"></bean>
+  
+<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">  
+<constructor-arg name="connectionFactory" ref="connectionFactory"></constructor-arg>  
+<property name="defaultDestinationName" value="myqueue"></property>  
+</bean>  
+  
+ 
+
+</beans>
