@@ -13,7 +13,7 @@ public class CustomerClient {
 		Client client = Client.create();
 
 		WebResource webResource = client
-		   .resource("http://localhost:8181/electricityservice/rest/customer/"+id);
+		   .resource("http://localhost:8181/electricityserviceprovider/rest/customer/"+id);
 
 		ClientResponse response = webResource.accept("application/json")
                 .get(ClientResponse.class);
