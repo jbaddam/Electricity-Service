@@ -11,6 +11,7 @@
   First Name :<b>${customer.firstname}</b><br>
   Last Name :<b>${customer.lastname}</b><br>
   User Name :<b>${customer.username}</b><br>
+  <h3>Service Plan info</h3>
   ${planinfo}
 </body>
 </html>

@@ -43,7 +43,7 @@ public class RegistrationService {
 
 			messageSender.sendMessage(custId + ":" + servicePlansList.get(2).getServiceId());
 			
-		 messege = "Your Service plan name "+ servicePlansList.get(1).getServiceName()+" & Validity "+servicePlansList.get(1).getValidity()+" Months ";
+		 messege = "Name "+ servicePlansList.get(2).getServiceName()+" & Validity "+servicePlansList.get(2).getValidity()+" Months ";
 			return messege;
 		} else {
 			return messege;
