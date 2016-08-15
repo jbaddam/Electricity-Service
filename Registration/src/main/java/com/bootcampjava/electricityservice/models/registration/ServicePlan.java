@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="service_info")
-public class Service {
+public class ServicePlan {
 	@Id
 	private String serviceId;
 	private String serviceName;

@@ -21,7 +21,14 @@ public class Customer {
 	private String lastname; 	
 	private String username; 	
 	private String password;
+	private ServicePlan servicePlan;
 	
+	public ServicePlan getServicePlan() {
+		return servicePlan;
+	}
+	public void setServicePlan(ServicePlan servicePlan) {
+		this.servicePlan = servicePlan;
+	}
 	public String getFirstname() {
 		return firstname;
 	}

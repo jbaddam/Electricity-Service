@@ -5,11 +5,11 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import com.cmsenergy.electricityservice.models.Service;
+import com.cmsenergy.electricityservice.models.ServicePlan;
 
 @WebService
 public interface PowerPlanService {
 	@WebMethod
-	public List<Service> getServicePlans();
+	public List<ServicePlan> getServicePlans();
 
 }

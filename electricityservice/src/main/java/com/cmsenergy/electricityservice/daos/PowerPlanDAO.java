@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
-import com.cmsenergy.electricityservice.models.Service;
+import com.cmsenergy.electricityservice.models.ServicePlan;
 
 @Repository
 public class PowerPlanDAO {
@@ -24,9 +24,9 @@ public class PowerPlanDAO {
 	
 	
 		
-	public List<Service> getAllPowerPlans() {		
+	public List<ServicePlan> getAllPowerPlans() {		
 		Session session = mySessionFactory.openSession();
-		List<Service> services = session.createCriteria(Service.class).list();
+		List<ServicePlan> services = session.createCriteria(ServicePlan.class).list();
 		return services;
 	}
 

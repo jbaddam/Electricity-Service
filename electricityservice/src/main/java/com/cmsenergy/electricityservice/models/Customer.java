@@ -29,12 +29,15 @@ public class Customer implements Serializable{
 	public void setCid(int cid) {
 		this.id = cid;
 	}
+	
 	public String getFirstname() {
 		return firstname;
 	}
+	
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+	
 	public String getLastname() {
 		return lastname;
 	}

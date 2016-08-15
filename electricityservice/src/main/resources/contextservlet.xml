@@ -24,7 +24,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>
-					com.cmsenergy.electricityservice.models.Service
+					com.cmsenergy.electricityservice.models.ServicePlan
 				</value>
 				<value>
 					com.cmsenergy.electricityservice.models.Customer
