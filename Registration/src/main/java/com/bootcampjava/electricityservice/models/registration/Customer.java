@@ -22,6 +22,7 @@ public class Customer {
 	private String username; 	
 	private String password;
 	
+	
 
 	public String getFirstname() {
 		return firstname;
