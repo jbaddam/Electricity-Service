@@ -2,6 +2,7 @@ package com.bootcampjava.electricityservice.services.registration;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class RegistrationService {
 
 	@Autowired
 	MessageSender messageSender;
+	final static Logger logger = Logger.getLogger(RegistrationService.class);
 
 	@Transactional
 	public String saveCustomer(Customer customer) {
@@ -32,18 +34,21 @@ public class RegistrationService {
 
 		String messege = null;
 		if (custId != 0) {
+			logger.info("Customer Saved Sccessfully with id " + custId);
 
 			Customer cust = custClient.getCustomerById(custId);
 
-			System.out.println(cust.toString());
+			logger.info("REST call successfully get the customer " + cust.toString());
 
 			List<Service> servicePlansList = serviceClient.getServicePlans();
 
-			System.out.println(servicePlansList.get(1).getServiceName());
+			logger.info("SOAP call successfully get the Serviceplans ");
 
 			messageSender.sendMessage(custId + ":" + servicePlansList.get(2).getServiceId());
-			
-		 messege = "Name "+ servicePlansList.get(2).getServiceName()+" & Validity "+servicePlansList.get(2).getValidity()+" Months ";
+
+			messege = "Name " + servicePlansList.get(2).getServiceName() + " & Validity "
+					+ servicePlansList.get(2).getValidity() + " Months ";
+
 			return messege;
 		} else {
 			return messege;
