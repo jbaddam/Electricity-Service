@@ -14,22 +14,15 @@
 		http://www.springframework.org/schema/tx 
     	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:annotation-config />
-	<mvc:annotation-driven />
-	<import resource="hibernateconfig.xml" />
-	<import resource="applicationbeans.xml" />
-	<import resource="activemq.xml" />
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory"
+		p:brokerURL="tcp://localhost:61616" />
 
+	<context:component-scan base-package="com.bootcampjava.electricityservice.jms"></context:component-scan>
 
-	<context:component-scan
-		base-package="com.bootcampjava.electricityservice.controllers.registration" />
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/</value>
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
+	<bean id="messageSender" class="com.bootcampjava.electricityservice.jms.MessageSender"></bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg name="connectionFactory" ref="connectionFactory"></constructor-arg>
+		<property name="defaultDestinationName" value="myqueue"></property>
 	</bean>
 </beans>
