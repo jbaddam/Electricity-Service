@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<wsdl:definitions name="servicePlan"
+	targetNamespace="http://serviceplan.soapservice.webservices.services.electricityservice.cmsenergy.com/"
+	xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://serviceplan.soapservice.webservices.services.electricityservice.cmsenergy.com/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema elementFormDefault="unqualified"
+			targetNamespace="http://serviceplan.soapservice.webservices.services.electricityservice.cmsenergy.com/"
+			version="1.0"
+			xmlns:tns="http://serviceplan.soapservice.webservices.services.electricityservice.cmsenergy.com/"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:element name="getServicePlans" type="tns:getServicePlans"></xs:element>
+			<xs:element name="getServicePlansResponse" type="tns:getServicePlansResponse"></xs:element>
+			<xs:complexType name="getServicePlans">
+				<xs:sequence></xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getServicePlansResponse">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="return"
+						type="tns:servicePlan"></xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="servicePlan">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="price" type="xs:string"></xs:element>
+					<xs:element minOccurs="0" name="serviceId" type="xs:string"></xs:element>
+					<xs:element minOccurs="0" name="serviceName" type="xs:string"></xs:element>
+					<xs:element minOccurs="0" name="validity" type="xs:string"></xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="getServicePlans">
+		<wsdl:part element="tns:getServicePlans" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getServicePlansResponse">
+		<wsdl:part element="tns:getServicePlansResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="PowerPlanService">
+		<wsdl:operation name="getServicePlans">
+			<wsdl:input message="tns:getServicePlans" name="getServicePlans">
+			</wsdl:input>
+			<wsdl:output message="tns:getServicePlansResponse" name="getServicePlansResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="servicePlanSoapBinding" type="tns:PowerPlanService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+		<wsdl:operation name="getServicePlans">
+			<soap:operation soapAction="" style="document"></soap:operation>
+			<wsdl:input name="getServicePlans">
+				<soap:body use="literal"></soap:body>
+			</wsdl:input>
+			<wsdl:output name="getServicePlansResponse">
+				<soap:body use="literal"></soap:body>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="servicePlan">
+		<wsdl:port binding="tns:servicePlanSoapBinding" name="PowerPlanServiceImplPort">
+			<soap:address
+				location="http://localhost:8181/electricityservice/soap/getserviceplans"></soap:address>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

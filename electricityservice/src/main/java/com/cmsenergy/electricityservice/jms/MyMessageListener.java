@@ -13,7 +13,7 @@ public class MyMessageListener implements MessageListener {
 		TextMessage message = (TextMessage) m;
 		MessegeDAO msgDAO = new MessegeDAO();
 		try {
-			System.out.println(message.getText());
+			
 			String[] messege = message.getText().split(":");
 			if (msgDAO.updateCustomer(Integer.parseInt(messege[0]), Integer.parseInt(messege[1]))) {
 

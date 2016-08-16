@@ -8,7 +8,7 @@ import com.cmsenergy.electricityservice.daos.PowerPlanDAO;
 import com.cmsenergy.electricityservice.models.ServicePlan;
 
 @WebService(endpointInterface ="com.cmsenergy.electricityservice.services.webservices.soapservice.serviceplan.PowerPlanService",
-serviceName="serviceplan")
+serviceName="servicePlan")
 public class PowerPlanServiceImpl implements PowerPlanService {
 	
 	@Override
