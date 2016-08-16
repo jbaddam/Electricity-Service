@@ -19,6 +19,7 @@ public class ReistrationContoller {
 	public String registratation(@ModelAttribute("customer") Customer customer, Model model) {
 
 		String messege = regSercice.saveCustomer(customer);
+		
 		if (messege != null) {
 			model.addAttribute("planinfo",messege);
 			return "success";

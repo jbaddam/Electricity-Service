@@ -13,13 +13,13 @@ import com.bootcampjava.electricityservice.models.registration.Customer;
 
 public class CustomerServiceTest {
 	
-	private static CustomerClient custClient;
+	private static CustomerClient custClient = Mockito.mock(CustomerClient.class);
 	private static  Customer customer;
+
 	
-	@BeforeClass
-	public static void setUp(){
+	@Test
+	public void testgetCustomerDetailsById(){
 		
-		custClient = Mockito.mock(CustomerClient.class);
 		customer = new Customer();
 		customer.setCid(7);
 		customer.setFirstname("Jagan Reddy");
@@ -28,11 +28,6 @@ public class CustomerServiceTest {
 		customer.setPassword(".jagan$reddy.@");
 		
 		when(custClient.getCustomerById(7)).thenReturn(customer);
-	
-	}
-	
-	@Test
-	public void testgetCustomerDetailsById(){
 		
 		Customer cust = custClient.getCustomerById(7);
 		assertSame(customer, cust);

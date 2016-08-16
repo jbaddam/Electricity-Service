@@ -260,6 +260,36 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>3.1.7</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>src/main/java</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/test.wsdl</wsdl>
+									<extraargs>
+                    <extraarg>-client</extraarg>
+                    <extraarg>-verbose</extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>http://serviceplan.soapservice.webservices.services.electricityservice.cmsenergy.com/=com.bootcampjava.electricityservice.soapservice</extraarg>
+                  </extraargs>									
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
 	</build>

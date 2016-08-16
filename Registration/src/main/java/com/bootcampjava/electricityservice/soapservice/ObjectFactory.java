@@ -51,11 +51,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Service }
+     * Create an instance of {@link ServicePlan }
      * 
      */
-    public Service createService() {
-        return new Service();
+    public ServicePlan createServicePlan() {
+        return new ServicePlan();
     }
 
     /**

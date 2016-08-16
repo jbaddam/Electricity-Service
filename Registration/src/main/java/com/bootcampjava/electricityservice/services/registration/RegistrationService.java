@@ -11,7 +11,7 @@ import com.bootcampjava.electricityservice.clients.soapclient.ServicePlanClient;
 import com.bootcampjava.electricityservice.daos.registration.RegistrationDAO;
 import com.bootcampjava.electricityservice.jms.MessageSender;
 import com.bootcampjava.electricityservice.models.registration.Customer;
-import com.bootcampjava.electricityservice.soapservice.Service;
+import com.bootcampjava.electricityservice.soapservice.ServicePlan;
 
 public class RegistrationService {
 
@@ -38,11 +38,11 @@ public class RegistrationService {
 
 			Customer cust = custClient.getCustomerById(custId);
 
-			logger.info("REST call successfully get the customer " + cust.toString());
+			logger.info("REST call successfully got the customer " + cust.toString());
 
-			List<Service> servicePlansList = serviceClient.getServicePlans();
+			List<ServicePlan> servicePlansList = serviceClient.getServicePlans();
 
-			logger.info("SOAP call successfully get the Serviceplans ");
+			logger.info("SOAP call successfully got the Serviceplans ");
 
 			messageSender.sendMessage(custId + ":" + servicePlansList.get(2).getServiceId());
 

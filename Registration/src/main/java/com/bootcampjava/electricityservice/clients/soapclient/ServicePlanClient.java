@@ -3,15 +3,15 @@ package com.bootcampjava.electricityservice.clients.soapclient;
 import java.util.List;
 
 import com.bootcampjava.electricityservice.soapservice.PowerPlanService;
-import com.bootcampjava.electricityservice.soapservice.Service;
-import com.bootcampjava.electricityservice.soapservice.Serviceplan;
+import com.bootcampjava.electricityservice.soapservice.ServicePlan_Service;
+import com.bootcampjava.electricityservice.soapservice.ServicePlan;
 public class ServicePlanClient {
 	
 	
 	
 	
-	public  List<Service> getServicePlans(){
-		Serviceplan service = new Serviceplan();
+	public  List<ServicePlan> getServicePlans(){
+		ServicePlan_Service service = new ServicePlan_Service();
 		PowerPlanService  powerPlans = service.getPowerPlanServiceImplPort();
 		return powerPlans.getServicePlans();		
 	}
