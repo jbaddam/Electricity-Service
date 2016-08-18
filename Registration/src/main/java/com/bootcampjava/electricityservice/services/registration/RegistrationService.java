@@ -26,6 +26,7 @@ public class RegistrationService {
 
 	@Autowired
 	MessageSender messageSender;
+	
 	final static Logger logger = Logger.getLogger(RegistrationService.class);
 
 	@Transactional

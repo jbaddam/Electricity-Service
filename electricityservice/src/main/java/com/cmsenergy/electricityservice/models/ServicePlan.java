@@ -32,6 +32,11 @@ public class ServicePlan {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "ServicePlan [serviceId=" + serviceId + ", serviceName=" + serviceName + ", price=" + price
+				+ ", validity=" + validity + "]";
+	}
 	public String getValidity() {
 		return validity;
 	}

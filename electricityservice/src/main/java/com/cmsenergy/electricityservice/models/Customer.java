@@ -53,6 +53,11 @@ public class Customer implements Serializable{
 	public String getPassword() {
 		return password;
 	}
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
+				+ ", password=" + password + "]";
+	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
