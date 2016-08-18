@@ -4,14 +4,14 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-import com.cmsenergy.electricityservice.daos.MessegeDAO;
+import com.cmsenergy.electricityservice.daos.ServicePlanDAO;
 
-public class MyMessageListener implements MessageListener {
+public class MessageReceiver implements MessageListener {
 
 	@Override
 	public void onMessage(Message m) {
 		TextMessage message = (TextMessage) m;
-		MessegeDAO msgDAO = new MessegeDAO();
+		ServicePlanDAO msgDAO = new ServicePlanDAO();
 		try {
 			
 			String[] messege = message.getText().split(":");

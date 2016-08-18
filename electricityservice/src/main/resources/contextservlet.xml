@@ -7,9 +7,9 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		 http://www.springframework.org/schema/tx 
     http://www.springframework.org/schema/tx/spring-tx.xsd">
-    
-    <context:annotation-config />
-	<mvc:annotation-driven />	
+
+	<context:annotation-config />
+	<mvc:annotation-driven />
 
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -18,9 +18,10 @@
 		<property name="password" value="admin" />
 	</bean>
 
-	<bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		
+
 		<property name="annotatedClasses">
 			<list>
 				<value>
@@ -31,7 +32,7 @@
 				</value>
 			</list>
 		</property>
-	
+
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

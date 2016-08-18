@@ -16,10 +16,10 @@
 
 	<context:annotation-config />
 	<mvc:annotation-driven />
-	
-	<import resource="hibernateconfig.xml" />
+		
 	<import resource="applicationbeans.xml" />
 	<import resource="activemq.xml" />
+	<import resource="hibernateconfig.xml" />
 
 
 	<context:component-scan

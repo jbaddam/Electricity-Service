@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bootcampjava.electricityservice.models.registration.Customer;
 import com.bootcampjava.electricityservice.services.registration.RegistrationService;
 
+/**
+ * @author Jagan Reddy
+ * This class has 
+ */
 @Controller
 public class ReistrationContoller {
 

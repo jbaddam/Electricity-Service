@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class MessegeDAO {
+public class ServicePlanDAO {
 
 	ApplicationContext context = new ClassPathXmlApplicationContext("contextservlet.xml");
 	SessionFactory mySessionFactory = (SessionFactory) context.getBean("mySessionFactory");
@@ -21,9 +21,7 @@ public class MessegeDAO {
 		query.setParameter("serviceId", serviceId);
 		query.setParameter("custId", custId);
 		int result = query.executeUpdate();
-		System.out.println(result);
 		tx.commit();
-		
 
 		if (result == 1)
 			return true;

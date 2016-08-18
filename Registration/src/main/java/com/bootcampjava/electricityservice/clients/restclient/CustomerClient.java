@@ -5,11 +5,21 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
+/**
+ * @author Jagan Reddy
+ * This class has a functionality to get the customer
+ * by making REST Call
+ */
 public class CustomerClient {
 	
+	/**
+	 * @param id
+	 * @return
+	 * This methods returns the customer object
+	 * after processed the REST Call 
+	 */
 	public Customer getCustomerById(int id){
-		
-		
+			
 		Client client = Client.create();
 
 		WebResource webResource = client
