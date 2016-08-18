@@ -2,7 +2,6 @@ package com.bootcampjava.electricityservice.daos.registration;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,10 +14,8 @@ public class RegistrationDAO {
 	private SessionFactory mySessionFactory;
 
 	public int saveCustomer(Customer customer) {
-		Session session = mySessionFactory.getCurrentSession();
-		Transaction trans = session.beginTransaction();
+		Session session = mySessionFactory.openSession();
 		int custId = (Integer) session.save(customer);
-		trans.commit();
 		return custId;
 	}
 }
