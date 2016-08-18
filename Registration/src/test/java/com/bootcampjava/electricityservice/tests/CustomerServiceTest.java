@@ -1,9 +1,8 @@
-package com.bootcampjava.tests;
+package com.bootcampjava.electricityservice.tests;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -16,7 +15,6 @@ public class CustomerServiceTest {
 	private static CustomerClient custClient = Mockito.mock(CustomerClient.class);
 	private static  Customer customer;
 
-	
 	@Test
 	public void testgetCustomerDetailsById(){
 		
@@ -30,8 +28,10 @@ public class CustomerServiceTest {
 		when(custClient.getCustomerById(7)).thenReturn(customer);
 		
 		Customer cust = custClient.getCustomerById(7);
-		assertSame(customer, cust);
+		assertEquals(customer, cust);
 		
 	}
 	
+	
 }
+
