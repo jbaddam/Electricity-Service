@@ -1,58 +1,24 @@
 package com.cmsenergy.electricityservice.daos;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
 import com.cmsenergy.electricityservice.models.Customer;
-import com.cmsenergy.electricityservice.util.JdbcUtil;
 
 @Repository
 public class CustomerDAO {
 
-	JdbcUtil util = new JdbcUtil();
-	Customer cust = new Customer();
+	ApplicationContext context = new ClassPathXmlApplicationContext("contextservlet.xml");
+	SessionFactory mySessionFactory = (SessionFactory) context.getBean("mySessionFactory");
 
-	/*
-	 * ApplicationContext context = new
-	 * ClassPathXmlApplicationContext("context-servlet.xml"); SessionFactory
-	 * mySessionFactory = (SessionFactory) context.getBean("mySessionFactory");
-	 */
 	public Customer getCustomerById(int id) {
 
-		/*
-		 * Session session = mySessionFactory.openSession(); System.out.println(
-		 * "session opened"); Customer customer = (Customer)
-		 * session.load(Customer.class, id);
-		 * System.out.println(customer.getFirstname()); return customer;
-		 */
-
-		Connection con = util.createMySqlConnection();
-		try {
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from customer where id =" + id);
-
-			while (rs.next()) {
-				cust.setCid(rs.getInt(1));
-				cust.setFirstname(rs.getString(2));
-				cust.setLastname(rs.getString(3));
-				cust.setUsername(rs.getString(4));
-				cust.setPassword(rs.getString(5));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return cust;
+		Session session = mySessionFactory.openSession();
+		Customer customer = (Customer) session.get(Customer.class, id);
+		return customer;
 
 	}
 
