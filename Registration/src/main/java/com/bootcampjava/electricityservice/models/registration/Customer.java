@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+/**
+ * @author Jagan Reddy
+ * Customer entity class
+ */
 @Entity
 @Table(name="customer")
 public class Customer {
@@ -41,11 +45,7 @@ public class Customer {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	@Override
-	public String toString() {
-		return "Customer [cid=" + cid + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
-				+ ", password=" + password + "]";
-	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -57,5 +57,11 @@ public class Customer {
 	}
 	public void setCid(int cid) {
 		this.cid = cid;
+	}
+	
+	@Override
+	public String toString() {
+		return "Customer [cid=" + cid + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
+				+ ", password=" + password + "]";
 	}
 }

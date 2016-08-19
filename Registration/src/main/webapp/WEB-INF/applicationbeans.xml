@@ -13,13 +13,10 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/tx 
     	http://www.springframework.org/schema/tx/spring-tx.xsd">
-    	
-	<bean id="regDAO"
-		class="com.bootcampjava.electricityservice.daos.registration.RegistrationDAO" />
-	<bean id="custClient"
-		class="com.bootcampjava.electricityservice.clients.restclient.CustomerClient"></bean>
-	<bean id="serviceClient"
-		class="com.bootcampjava.electricityservice.clients.soapclient.ServicePlanClient"></bean>
-	<bean id="regSercice"
-		class="com.bootcampjava.electricityservice.services.registration.RegistrationService" />
+
+	<bean id="regDAO" class="com.bootcampjava.electricityservice.daos.registration.RegistrationDAO" />
+	<bean id="custClient" class="com.bootcampjava.electricityservice.clients.restclient.CustomerClient"/>
+	<bean id="serviceClient" class="com.bootcampjava.electricityservice.clients.soapclient.ServicePlanClient"/>
+	<bean id="regSercice" class="com.bootcampjava.electricityservice.services.registration.RegistrationService" />
+	
 </beans>

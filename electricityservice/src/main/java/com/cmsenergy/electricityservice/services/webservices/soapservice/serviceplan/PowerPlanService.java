@@ -7,6 +7,10 @@ import javax.jws.WebService;
 
 import com.cmsenergy.electricityservice.models.ServicePlan;
 
+/**
+ * @author Jagan Reddy
+ * End point interface
+ */
 @WebService
 public interface PowerPlanService {
 	@WebMethod

@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author Jagan Reddy
+ * Customer entity class
+ */
 @Entity
 @Table(name="customer")
 @XmlRootElement

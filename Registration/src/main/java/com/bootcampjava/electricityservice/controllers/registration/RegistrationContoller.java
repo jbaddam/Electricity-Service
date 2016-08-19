@@ -14,15 +14,15 @@ import com.bootcampjava.electricityservice.services.registration.RegistrationSer
  * This class has 
  */
 @Controller
-public class ReistrationContoller {
+public class RegistrationContoller {
 
 	@Autowired
 	RegistrationService regSercice;
 
 	@RequestMapping("/registration")
-	public String registratation(@ModelAttribute("customer") Customer customer, Model model) {
+	public String registration(@ModelAttribute("customer") Customer customer, Model model) {
 
-		String messege = regSercice.saveCustomer(customer);
+		String messege = regSercice.registerCustomer(customer);
 		
 		if (messege != null) {
 			model.addAttribute("planinfo",messege);

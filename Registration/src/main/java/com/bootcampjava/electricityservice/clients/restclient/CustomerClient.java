@@ -15,7 +15,7 @@ public class CustomerClient {
 	/**
 	 * @param id
 	 * @return
-	 * This methods returns the customer object
+	 * This method returns the customer object
 	 * after processed the REST Call 
 	 */
 	public Customer getCustomerById(int id){
