@@ -32,6 +32,7 @@ public class ServicePlanDAO {
 		query.setParameter("serviceId", serviceId);
 		query.setParameter("custId", custId);
 		int result = query.executeUpdate();
+		session.close();
 
 		if (result == 1)
 			return true;

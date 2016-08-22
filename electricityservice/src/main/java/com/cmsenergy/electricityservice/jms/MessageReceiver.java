@@ -4,6 +4,9 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.cmsenergy.electricityservice.daos.ServicePlanDAO;
 
 /**
@@ -12,6 +15,8 @@ import com.cmsenergy.electricityservice.daos.ServicePlanDAO;
  * from activeMQ
  */
 public class MessageReceiver implements MessageListener {
+	
+	ApplicationContext context = new ClassPathXmlApplicationContext("applicatationcontext.xml");
 
 	/* (non-Javadoc)
 	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
@@ -20,11 +25,11 @@ public class MessageReceiver implements MessageListener {
 	public void onMessage(Message m) {
 		
 		TextMessage message = (TextMessage) m;
-		ServicePlanDAO msgDAO = new ServicePlanDAO();
+		ServicePlanDAO srvDAO = (ServicePlanDAO) context.getBean("srvDAO");
 		try {
 
-			String[] messege = message.getText().split(":");
-			msgDAO.updateCustomer(Integer.parseInt(messege[0]), Integer.parseInt(messege[1]));
+			String[] messageArray = message.getText().split(":");
+			srvDAO.updateCustomer(Integer.parseInt(messageArray[0]), Integer.parseInt(messageArray[1]));
 
 		} catch (Exception e) {
 			e.printStackTrace();

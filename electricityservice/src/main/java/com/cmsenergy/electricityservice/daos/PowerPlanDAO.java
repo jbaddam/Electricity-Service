@@ -31,6 +31,7 @@ public class PowerPlanDAO {
 		
 		Session session = mySessionFactory.openSession();
 		List<ServicePlan> services = session.createCriteria(ServicePlan.class).list();
+		session.close();
 		return services;
 	}
 

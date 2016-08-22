@@ -33,6 +33,7 @@ public class CustomerDAO {
 		Session session = mySessionFactory.openSession();
 		Customer customer = (Customer) session.get(Customer.class, id);
 		logger.info("Customer retrived successfully\n customer info " + customer.toString());
+		session.close();
 		return customer;
 
 	}

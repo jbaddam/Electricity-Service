@@ -28,6 +28,7 @@ public class RegistrationDAO {
 		
 		Session session = mySessionFactory.openSession();
 		int custId = (Integer) session.save(customer);
+		session.close();
 		return custId;
 	}
 }

@@ -6,6 +6,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.cmsenergy.electricityservice.daos.CustomerDAO;
 import com.cmsenergy.electricityservice.models.Customer;
 
@@ -16,6 +19,8 @@ import com.cmsenergy.electricityservice.models.Customer;
  */
 @Path("/customer")
 public class CustomerService {
+	
+	ApplicationContext context = new ClassPathXmlApplicationContext("applicatationcontext.xml");
 
 	/**
 	 * @param id
@@ -28,7 +33,7 @@ public class CustomerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Customer getUserById(@PathParam("id") String id) {
 		
-		CustomerDAO custDAO = new CustomerDAO();
+		CustomerDAO custDAO = (CustomerDAO)context.getBean("custDAO");
 		Customer customer=custDAO.getCustomerById(Integer.parseInt(id));		
 		return customer;		
 	}
