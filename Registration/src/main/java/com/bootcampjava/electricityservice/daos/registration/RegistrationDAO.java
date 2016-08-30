@@ -24,6 +24,7 @@ public class RegistrationDAO {
 	 * This method will return the customerId
 	 * once it successfully stored the customer in database
 	 */
+	
 	public int saveCustomer(Customer customer) {
 		
 		Session session = mySessionFactory.openSession();

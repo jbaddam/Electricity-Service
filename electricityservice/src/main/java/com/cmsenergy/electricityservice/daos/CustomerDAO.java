@@ -18,7 +18,6 @@ import com.cmsenergy.electricityservice.models.Customer;
 public class CustomerDAO {
 	final static Logger logger = Logger.getLogger(CustomerDAO.class);
 
-
 	ApplicationContext context = new ClassPathXmlApplicationContext("contextservlet.xml");
 	SessionFactory mySessionFactory = (SessionFactory) context.getBean("mySessionFactory");
 
